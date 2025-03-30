@@ -55,7 +55,7 @@ def build_pinecone_vector_store():
     # Build new index if nonexistent.
     if index_name not in current_indexes:
         pinecone.create_index(
-            dimension = 1536,
+            dimension = 384,
             metric    = "cosine",
             name      = index_name,
             spec      = ServerlessSpec(cloud = "aws", region = "us-east-1")

@@ -53,6 +53,7 @@ The character card, which contains the model prompts, is located in the `data/pr
 ### References
 
 - [A Long-Term Memory Agent](https://python.langchain.com/docs/versions/migrating_memory/long_term_memory_agent)
+- [Cost-Efficient Multi-Agent Collaboration with LangGraph + Gemma for Code Generation](https://medium.com/google-cloud/cost-efficient-multi-agent-collaboration-with-langgraph-gemma-for-code-generation-88d6cf87fc99)
 - [Build a MemGPT Discord Agent in LangGraph Cloud](https://www.youtube.com/watch?v=ORAecR4hXsQ)
 - [Building a Local Chat Application with Streamlit, Ollama and Llama 3.2](https://medium.com/@gelsonm/building-a-local-chat-application-with-streamlit-ollama-and-llama-3-2-8f5b116dd8ee)
 - [Building an AI Agent with LangGraph, TypeScript, Next.js, TailwindCSS, and Pinecone](https://dev.to/bobbyhalljr/building-an-ai-agent-with-langgraph-typescript-nextjs-tailwindcss-and-pinecone-3bkb)

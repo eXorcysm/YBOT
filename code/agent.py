@@ -8,7 +8,6 @@ This module manages the chatbot agent and its tools and functions.
 
 from typing import List
 
-# import json
 import sys
 
 from IPython.display             import Image
@@ -16,12 +15,12 @@ from IPython.display             import display
 from langchain_core.messages     import get_buffer_string
 from langchain_core.prompts      import ChatPromptTemplate
 from langchain_core.runnables    import RunnableConfig
+from langchain_ollama            import ChatOllama
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph             import END, START
 from langgraph.graph             import MessagesState
 from langgraph.graph             import StateGraph
 from langgraph.prebuilt          import ToolNode
-from langchain_ollama            import ChatOllama
 from transformers                import AutoTokenizer
 from .agent_test                 import run_tests
 from .agent_tools                import save_recall_memory
@@ -95,10 +94,7 @@ class Agent():
             agent_prompt = txt.read()
 
         prompt = ChatPromptTemplate.from_messages(
-            [
-                ("placeholder", "{messages}"),
-                ("system", agent_prompt)
-            ]
+            [("placeholder", "{messages}"), ("system", agent_prompt)]
         )
 
         return prompt
@@ -126,12 +122,6 @@ class Agent():
         recall = (
             "<recall_memory>\n" + "\n".join(state["recall_memories"]) + "\n</recall_memory>"
         )
-
-        # print("\n\n============ MESSAGE ============\n\n")
-        # print(type(state["messages"]))
-        # print(type(state["messages"][0]))
-        # print(self.user + ": " + state["messages"][0].content)
-        # print("\n\n============ MESSAGE ============\n\n")
 
         response = prompt_chain.invoke(
             {

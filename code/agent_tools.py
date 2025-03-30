@@ -37,11 +37,9 @@ def save_recall_memory(memory: str, config: RunnableConfig) -> str:
     Save memory to vector store.
     """
 
-    user_id = get_user_id(config)
-
     doc = Document(
         id           = str(uuid.uuid4()),
-        metadata     = {"user_id" : user_id},
+        metadata     = {"user_id" : get_user_id(config)},
         page_content = memory
     )
 
@@ -55,14 +53,9 @@ def search_recall_memories(query: str, config: RunnableConfig) -> List[str]:
     Search for relevant memories in vector store.
     """
 
-    user_id = get_user_id(config)
-
-    def _filter_function(doc: Document) -> bool:
-        return doc.metadata.get("user_id") == user_id
-
     docs = vector_store.similarity_search(
         query,
-        filter = _filter_function,
+        filter = {"user_id" : {"$eq" : get_user_id(config)}},
         k      = 3
     )
 
